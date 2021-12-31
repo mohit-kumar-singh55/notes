@@ -1,12 +1,26 @@
 import React,{useState} from 'react';
+import { auth } from "../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setpassword] = useState('');
+    const navigate = useNavigate();
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = async (e) =>{
         e.preventDefault();
-        console.log(email,password);
+
+        try {
+            const result = await signInWithEmailAndPassword(auth, email, password);
+            // toest from Materialized
+            window.M.toast({ html: `Welcome ${result.user.email}`, classes: 'rounded blue' });
+
+            navigate("/");
+        }
+        catch (error) {
+            window.M.toast({ html: error.message, classes: 'rounded red' });
+        }
     }
 
     return (
