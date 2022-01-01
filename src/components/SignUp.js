@@ -28,8 +28,8 @@ function SignUp() {
             <h2>SignUp</h2>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div className="input-field col s6">
-                    <input type="email" placeholder="email" onChange={(e) => { setEmail(e.target.value) }} />
-                    <input type="password" placeholder="password" onChange={(e) => { setpassword(e.target.value) }} />
+                    <input type="email" placeholder="email" value={email} onChange={(e) => { setEmail(e.target.value) }} />
+                    <input type="password" placeholder="password" value={password} onChange={(e) => { setpassword(e.target.value) }} />
                 </div>
                 <button type='submit' className='btn blue'>SignUp</button>
             </form>
